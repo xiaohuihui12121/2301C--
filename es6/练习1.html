@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body></body>
+  <script>
+    // A()
+    //   .then(function (resultA) {
+    //     // 在 A 完成后执行 B
+    //     return B(resultA);
+    //   })
+    //   .then(function (resultB) {
+    //     // 在 B 完成后执行 C
+    //     return C(resultB);
+    //   })
+    //   .then(function (resultC) {
+    //     // 在 C 完成后进行处理
+    //     console.log(resultC);
+    //   })
+    //   .catch(function (error) {
+    //     // 捕获错误并进行处理
+    //     console.error(error);
+    //   });
+
+    // ------------------------------------------------------------------
+    var obj = new Proxy(
+      {},
+      {
+        get: function (target, propKey, receiver) {
+          console.log(`getting ${propKey}!`);
+          return Reflect.get(target, propKey, receiver);
+        },
+        set: function (target, propKey, value, receiver) {
+          console.log(`setting ${propKey}!`);
+          return Reflect.set(target, propKey, value, receiver);
+        },
+      }
+    );
+    obj.count = 1;
+    //  setting count!
+    // ++obj.count;
+    //  getting count!
+    //  setting count!
+    //  2
+  </script>
+</html>

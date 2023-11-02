@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // let obj = {
+    //     name:'z',
+    //     age:11
+    // }
+
+    const map = new Map([
+      ["name", "12"],
+      ["name2", "14"],
+    ]);
+    map.set("[name111]", "2222");
+    // console.log(map);
+
+    map.get("name2");
+    // console.log(map);
+
+    map.has("name");
+    console.log(map);
+
+    // delete obj.name
+
+    const array = [1, 1, 2, 2, 3, 4, 5, 6, 7, 8, 9];
+
+    let set = new Set([1, 1, 2, 2, 3, 4, 5, 6, 7, 8, 9]);
+    console.log(set);
+
+    // --------------------------------------------
+
+    function Point(x, y) {
+      this.x = x;
+      this.y = y;
+    }
+
+    Point.prototype.toString = function () {
+      return "(" + this.x + ", " + this.y + ")";
+    };
+
+    var p = new Point(1, 2);
+    console.log(p);
+  </script>
+</html>

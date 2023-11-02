@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* Tab按钮样式 */
+      .tabs .tab-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #f0f0f0;
+        cursor: pointer;
+      }
+
+      .tabs .tab-button:hover,
+      .tabs .tab-button.active {
+        background-color: #ccc;
+      }
+
+      /* Tab内容样式 */
+      .tabs .tab-content {
+        display: none;
+      }
+
+      .tabs .tab-content.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Tab栏容器 -->
+    <div class="tabs">
+      <!-- Tab按钮 -->
+      <div class="tab-button active" data-tab="tab1">Tab 1</div>
+      <div class="tab-button" data-tab="tab2">Tab 2</div>
+      <div class="tab-button" data-tab="tab3">Tab 3</div>
+
+      <!-- Tab内容 -->
+      <div class="tab-content active" id="tab1">Tab 1</div>
+      <div class="tab-content" id="tab2">Tab 2</div>
+      <div class="tab-content" id="tab3">Tab 3</div>
+    </div>
+  </body>
+  <script>
+    // 获取Tab按钮和Tab内容元素
+    const tabButtons = document.querySelectorAll(".tab-button");
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    // Tab按钮点击事件处理函数
+    function handleTabClick() {
+      // 移除所有Tab按钮和Tab内容的active类名
+      tabButtons.forEach((button) => button.classList.remove("active"));
+      tabContents.forEach((content) => content.classList.remove("active"));
+
+      // 添加当前Tab按钮和对应的Tab内容的active类名
+      const tabId = this.getAttribute("data-tab");
+      const tabButton = document.querySelector(`[data-tab="${tabId}"]`);
+      const tabContent = document.getElementById(tabId);
+      tabButton.classList.add("active");
+      tabContent.classList.add("active");
+    }
+
+    // 给每个Tab按钮添加点击事件监听器
+    tabButtons.forEach((button) =>
+      button.addEventListener("click", handleTabClick)
+    );
+  </script>
+</html>
